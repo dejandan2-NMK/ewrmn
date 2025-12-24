@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Skopje Radiation Graph</title>
+<script>
+function formatDate(d) {
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2,'0');
+  const dd = String(d.getDate()).padStart(2,'0');
+  return yyyy + mm + dd + "010000";
+}
+
+window.onload = function () {
+  const today = new Date();
+  const start = new Date();
+  start.setDate(today.getDate() - 7);
+
+  const url =
+    "https://remap.jrc.ec.europa.eu/TimeSeriesStandAlone.aspx" +
+    "?stationCode=MKMP-1_Skopje" +
+    "&latitude=41.99" +
+    "&longitude=21.42" +
+    "&startDate=" + formatDate(start) +
+    "&endDate=" + formatDate(today);
+
+  document.getElementById("frame").src = url;
+};
+</script>
+</head>
+<body style="margin:0">
+<iframe id="frame" width="100%" height="650" frameborder="0"></iframe>
+</body>
+</html>
