@@ -4,11 +4,14 @@
 <meta charset="UTF-8">
 <title>Skopje Radiation Graph</title>
 <script>
-function formatDate(d) {
+function formatDateTime(d) {
   const yyyy = d.getFullYear();
   const mm = String(d.getMonth() + 1).padStart(2,'0');
   const dd = String(d.getDate()).padStart(2,'0');
-  return yyyy + mm + dd + "010000";
+  const hh = String(d.getHours()).padStart(2,'0');
+  const mi = String(d.getMinutes()).padStart(2,'0');
+  const ss = "00";
+  return yyyy + mm + dd + hh + mi + ss;
 }
 
 window.onload = function () {
@@ -23,8 +26,8 @@ today.setHours(today.getHours() - 4);
     "?stationCode=MKMP-1_Skopje" +
     "&latitude=41.99" +
     "&longitude=21.42" +
-    "&startDate=" + formatDate(start) +
-    "&endDate=" + formatDate(today);
+    "&startDate=" + formatDateTime(start) +
+"&endDate=" + formatDateTime(today);
 
   document.getElementById("frame").src = url;
 };
@@ -34,4 +37,5 @@ today.setHours(today.getHours() - 4);
 <iframe id="frame" width="100%" height="650" frameborder="0"></iframe>
 </body>
 </html>
+
 
