@@ -13,6 +13,8 @@ function formatDate(d) {
 
 window.onload = function () {
   const today = new Date();
+today.setHours(today.getHours() - 4);
+
   const start = new Date();
   start.setDate(today.getDate() - 7);
 
@@ -32,3 +34,4 @@ window.onload = function () {
 <iframe id="frame" width="100%" height="650" frameborder="0"></iframe>
 </body>
 </html>
+
